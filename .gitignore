@@ -9,6 +9,7 @@ captures/
 *.pcap
 *.pcapng
 _extracted_formatters.py
+_site/
 
 # Keep optional agent skill tracked; ignore other local editor junk
 .cursor/*

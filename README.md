@@ -17,6 +17,8 @@ python -m wireshark_mcp
 | [Troubleshooting](docs/Troubleshooting.md) | Offline server, PATH issues |
 | [Security](docs/Security.md) | Safe capture rules |
 
+GitHub Pages (optional): set **Settings → Pages → Source = GitHub Actions**, then the `Pages` workflow publishes `docs/` as HTML.
+
 ## What you get
 
 - Live capture and pcap/pcapng analysis through MCP **tools**

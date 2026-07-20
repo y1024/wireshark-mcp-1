@@ -1,0 +1,62 @@
+# Publish docs/ as GitHub Pages (static wiki).
+# Requires: Settings → Pages → Source = "GitHub Actions"
+# (or rely on enablement: true below on personal repos).
+
+name: Pages
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "docs/**"
+      - "scripts/build_docs_site.py"
+      - ".github/workflows/pages.yml"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install markdown converter
+        run: python -m pip install --upgrade pip markdown
+
+      - name: Build static site from docs/
+        run: python scripts/build_docs_site.py
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Creates the Pages site on first run when the API returns 404
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
