@@ -55,3 +55,7 @@ python -m pip install -e .
 ## Permission denied capturing
 
 Unix: add your user to the `wireshark` group (distro-specific) or run with appropriate capabilities. Prefer analyzing saved pcaps when possible.
+
+## GitHub Pages site for these docs
+
+The public docs site is built by the `Pages` workflow. If deploy fails with **Resource not accessible by integration**, an admin must set **Settings → Pages → Source = GitHub Actions** once, then re-run the workflow. The Node 20 line in Actions logs is a runner warning, not the failure cause.
