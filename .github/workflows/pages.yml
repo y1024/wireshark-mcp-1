@@ -40,10 +40,9 @@ jobs:
         run: python scripts/build_docs_site.py
 
       - name: Setup Pages
+        # Repo Pages must already be enabled with Source = GitHub Actions
+        # (GITHUB_TOKEN cannot create the Pages site: "Resource not accessible by integration")
         uses: actions/configure-pages@v5
-        with:
-          # Creates the Pages site on first run when the API returns 404
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -27,6 +27,6 @@ The `Pages` workflow publishes this wiki as HTML.
 2. Push to `main`/`master`, or run the **Pages** workflow manually
 3. Site URL: `https://<owner>.github.io/wireshark-mcp/`
 
-If `configure-pages` fails with **Get Pages site failed / Not Found**, step 1 was skipped (or org policy blocked auto-enable). Set Source to GitHub Actions once, then re-run the workflow.
+If `configure-pages` fails with **Get Pages site failed / Not Found** or **Resource not accessible by integration**, the Actions token cannot create Pages. An admin must set Source to **GitHub Actions** once (UI or API), then re-run the workflow.
 
 The Node 20 deprecation line in the log is a runner warning from the Pages actions — not the cause of the failure.
