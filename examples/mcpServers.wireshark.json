@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "wireshark": {
+      "command": "REPLACE_WITH_ABSOLUTE_PATH_TO_PYTHON",
+      "args": ["-m", "wireshark_mcp"],
+      "env": {
+        "TSHARK_PATH": "REPLACE_WITH_ABSOLUTE_PATH_TO_TSHARK"
+      }
+    }
+  }
+}
